@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../../node_modules/flowbite";
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&display=swap');
+
+@theme {
+  --font-dosis: "Dosis", sans-serif;
+  --font-pacifico: "Pacifico", cursive;
+  --font-opensans:  "Open Sans", sans-serif;
+}
