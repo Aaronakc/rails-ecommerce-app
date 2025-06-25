@@ -1,36 +1,40 @@
 <div class="w-full flex flex-col gap-6 justify-center items-center ">
-<div class="w-full flex flex-col text-center justify-center md:flex-row gap-6">
-<%= link_to "All", products_path,class:"rounded bg-gray-300 px-6 py-2" %>
-<% @categories.each do |category| %>
-  <%= link_to category.name.capitalize,
-  products_path(category_id: category.id),class:"rounded bg-gray-300 px-2 py-2 " %>
-  <% end %>
-</div>
+  <div class="w-full flex flex-col text-center justify-center md:flex-row gap-6">
+    <%= link_to "All", products_path,class:"rounded bg-gray-300 px-6 py-2" %>
+    <% @categories.each do |category| %>
+      <%= link_to category.name.capitalize,
+        products_path(category_id: category.id),class:"rounded bg-gray-300 px-2 py-2 " %>
+    <% end %>
+    </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
-<% @products.each do |product| %>
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full ">
+  <% @products.each do |product| %>
+      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full ">
+        <div class='h-64 flex justify-center items-center' >
+          <img class="p-8 h-full rounded-t-lg object-contain" src="<%= product.image %>" alt="<%= product.name %>" />
+        </div>
 
-
- 
-       <div class='h-64 flex justify-center items-center' >
-        <img class="p-8 h-full rounded-t-lg object-contain" src="<%= product.image %>" alt="<%= product.name %>" />
-       </div>
         <div class="px-5 pb-5 flex flex-col flex-grow">
           <div>
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white" title="<%= product.name %>"><%= truncate(product.name,length:30) %></h5>
           </div>
-        <div class="flex items-center justify-center mt-2.5 mb-5 flex-grow mt-auto" title="<%= product.description %>">
+          <div class="flex items-center justify-center mt-2.5 mb-5 flex-grow mt-auto" title="<%= product.description %>">
             <span><%= truncate(product.description,length:100) %></span>
-        </div>
-        <div class="flex items-center justify-between">
+          </div>
+          <div class="flex items-center justify-between">
             <div class="text-3xl font-bold text-gray-900 dark:text-white">$<%= product.price %></div>
             <div>
-            <%= link_to "View Details",product_path(product) ,class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+            <%= link_to "View Details",product_path(product) ,class:"text-white bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" %>
             </div>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="mt-4">
+              <%= button_to "Add to Cart", cart_items_path,method: :post,params: { product_id: product.id },class: "w-full text-center text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md text-sm px-4 py-2 "  %>
+            </div>
+          <% end %>
         </div>
-    </div>
-</div>
+      </div>
 <% end %>
 </div>
 </div>
