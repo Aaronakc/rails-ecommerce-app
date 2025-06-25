@@ -1,13 +1,19 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+    <div class="flex gap-2  ">
+    Already have an account? <%= link_to "Log in", new_session_path(resource_name),class:"underline text-yellow-600" %><br />
+    </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+<div class="flex gap-2 md:mb-2  ">
+  Do not have an account? <%= link_to "Sign up", new_registration_path(resource_name) ,class:"underline text-blue-700" %><br />
+  </div>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<div class="flex w-full md:justify-end">
+  <%= link_to "Forgot your password?", new_password_path(resource_name) ,class:"text-yellow-600 underline"%><br />
+</div>
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
