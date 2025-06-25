@@ -5,10 +5,12 @@ class ProductsController < ApplicationController
   def index
     if Product.count.zero?
       fetch_api_once
-      @products = Product.all
+      @products = filtered_products
     else
-      @products= Product.all
+      @products= filtered_products
     end
+    @categories= Category.all
+    
   end
 
   def show
@@ -16,6 +18,14 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def filtered_products
+    if params[:category_id].present?
+      Product.where(category_id: params[:category_id])
+    else
+      Product.all
+    end
+  end
 
   def fetch_api_once
     response=HTTP.get("https://fakestoreapi.com/products")
