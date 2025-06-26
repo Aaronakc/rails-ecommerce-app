@@ -55,5 +55,5 @@
 <% else %>
 <p class="text-4xl text-gray-700 flex justify-center mt-20">Your Cart is Empty</p>
 <% end %>
-<%= button_to "Place Order" ,orders_path,method: :post,class:"rounded bg-green-700 px-2 py-1 text-white mt-10 hover:bg-green-900" %>
+<%= button_to "Place Order" ,orders_path,method: :post,onclick: "return confirm('first add the item to the cart to place order!!')",class:"rounded bg-green-700 px-2 py-1 text-white mt-10 hover:bg-green-900" %>
 </div>

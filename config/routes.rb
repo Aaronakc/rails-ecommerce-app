@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get "orders/index"
-  get "orders/create"
-  get "orders/show"
-  get "orders/destroy"
+  get 'contact' => 'static_pages#contact'
   root "products#index"
-  resources :products ,only: [:index,:show]
+  resources :products ,only: [:index,:show] do
+    resources :reviews
+  end
   devise_for :users
   resources :cart_items, only: [:create,:destroy]
   resources :carts, only: [:show]
