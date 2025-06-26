@@ -1,0 +1,47 @@
+<div class="w-full flex flex-col justify-center ">
+  <h1 class="font-bold text-4xl text-center mb-10">Orders Details</h1>
+<% if @orders.present? %>
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 rounded-s-lg">
+                    Order ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Placed AT
+                </th>
+                
+                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <% @orders.each do |order| %>
+        <tbody>
+            <tr class="bg-white dark:bg-gray-800">
+              <td class="px-6 py-4">
+                    <%= order.id %>
+                </td>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <%= order.status %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= order.created_at.to_date %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= link_to "View details",order_path(order),class:'underline text-blue-600' %>
+                </td>
+            </tr>
+            
+        </tbody>
+        <% end %>
+      
+    </table>
+</div>
+<% end %>
+
+</div>

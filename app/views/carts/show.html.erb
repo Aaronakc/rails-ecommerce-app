@@ -1,5 +1,5 @@
-<div>
-  <h1 class="font-bold text-4xl w-full flex justify-center text-center mb-7">Your Cart</h1>
+<div class=" w-full flex flex-col justify-center">
+  <h1 class="font-bold text-4xl w-full flex justify-center text-center mb-10">Your Cart</h1>
 
 <% if @cart_items.present? %>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
@@ -44,7 +44,7 @@
                    $<%= item.quantity * item.product.price %>
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <%= button_to "Delete",cart_item_path(item), method: :delete,class:"font-medium text-red-600 dark:text-blue-500 hover:underline" %>
+                    <%= button_to "Delete",cart_item_path(item), method: :delete,  onclick: "return confirm('Are you sure you want to delete this item?')",class:"font-medium text-red-600 dark:text-blue-500 hover:underline" %>
                 </td>
                 </tr>
                 <% end %>
@@ -53,6 +53,7 @@
         </table>
 </div>
 <% else %>
-<p class="text-4xl flex text-center w-full">Your Cart is Empty</p>
+<p class="text-4xl text-gray-700 flex justify-center mt-20">Your Cart is Empty</p>
 <% end %>
+<%= button_to "Place Order" ,orders_path,method: :post,class:"rounded bg-green-700 px-2 py-1 text-white mt-10 hover:bg-green-900" %>
 </div>
