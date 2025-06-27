@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     item=@cart.cart_items.create(product: @product,quantity:1)
     end
 
-    redirect_to cart_path(current_cart)
+    redirect_to products_path,notice:"Products added to cart"
   end
 
   def destroy

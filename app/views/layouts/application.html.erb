@@ -15,13 +15,16 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <meta name="turbo-cache-control" content="no-cache">
+
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    
   </head>
 
 
   <body>
+  
   <%= render 'shared/nav' %>
+  <%= render "layouts/flash" %>
     <main class="container mx-auto mt-3 mb-20 px-5 flex ">
       <%= yield %>
     </main>

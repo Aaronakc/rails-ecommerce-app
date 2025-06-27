@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import ConfirmController from "./confirm_controller"
+application.register("confirm", ConfirmController)
+
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
