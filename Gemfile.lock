@@ -1,9 +1,7 @@
 GEM
   remote: https://rails-assets.org/
   specs:
-    rails-assets-es6-promise (4.2.4)
-    rails-assets-sweetalert2 (5.1.1)
-      rails-assets-es6-promise
+    rails-assets-sweetalert2 (11.22.1)
 
 GEM
   remote: https://rubygems.org/
@@ -378,7 +376,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
-  rails-assets-sweetalert2 (~> 5.1.1)!
+  rails-assets-sweetalert2 (~> 11.22.1)!
   rubocop-rails-omakase
   selenium-webdriver
   simple_form
